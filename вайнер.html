@@ -2,18 +2,23 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
     <title></title>
   </head>
-  <body>
-    <h1>Список дел</h1>
-    <input type="text" name="" placeholder="Новый элемент списка">
-    <button type="button" name="button">Создать</button>
-    <button type="button" name="button">Очистить все</button><br>
-    <ol>
-    <label><li><input type="checkbox"> Почесать кошку &#10060</li></label>
-    <label><li><input type="checkbox"> Полить картошку &#10060</li></label>
-    <label><li><input type="checkbox"> Сложить в Лукошко &#10060</li></label>
+  <body class="outer">
+    <span class="inner">
 
+    <h1>Список дел</h1>
+
+    <input type="text" name="" placeholder="Новый элемент списка">
+    <button type="button" name="button" style="background:silver; border:none">Создать</button>
+    <button type="button" name="button" style="background:red; border:none">Очистить все</button><br>
+
+    <ol>
+        <li><div> Почесать кошку</div></li>
+        <li><div> Полить картошку</div></li>
+        <li><div> Сложить в Лукошко</div></li>
     </ol>
+    </span>
   </body>
 </html>
