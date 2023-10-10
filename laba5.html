@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+
+      function counter(n) {
+        if (n < 0) {
+          return;
+        }
+        console.log(n);
+        setTimeout(function() {
+            counter(n - 1);
+          }, 1000);
+        };
+        counter(7);
+
+    </script>
+
+    <script>
+    function createCounter(n) {
+      let count = n;
+      let intervalId;
+
+      function decrement() {
+        console.log(count);
+        count--;
+      }
+
+      return {
+        start() {
+          clearInterval(intervalId);
+          intervalId = setInterval(decrement, 1000);
+          decrement();
+        },
+        pause() {
+          clearInterval(intervalId);
+        },
+        stop() {
+          clearInterval(intervalId);
+          count = n;
+        },
+      };
+    };
+    const counter = createCounter(5);
+    counter.start();
+    counter.pause();
+    counter.start();
+    counter.stop();
+    </script>
+
+    <script>
+      function countdown(n) {
+        if (n < 0) {
+          return;
+        }
+        console.log(n);
+        setTimeout(function() {
+            countdown(n - 1);
+          }, 1000);
+        };
+      countdown(5);
+    </script>
+
+    <script>
+      class HttpError extends Error {
+        constructor(response) {
+          super(`${response.status} for ${response.url}`);
+          this.name = 'HttpError';
+          this.response = response;
+        }
+      }
+
+      function loadJson(url) {
+        return fetch(url)
+          .then(response => {
+            if (response.status == 200) {
+              return response.json();
+            } else {
+              throw new HttpError(response);
+            }
+          })
+      }
+
+      async function getGithubUser() {
+      let name;
+        do {
+          name = prompt("Введите логин?", "iliakan");
+          try {
+            const user = await loadJson(`https://api.github.com/users/${name}`);
+            alert(`Полное имя: ${user.name}.`);
+            return user;
+          } catch (err) {
+            if (err instanceof HttpError && err.response.status == 404) {
+              alert("Такого пользователя не существует, пожалуйста, повторите ввод.");
+            } else {
+              throw err;
+            }
+          }
+        } while (true);
+      }
+      getGithubUser();
+    </script>
+
+    <script>
+      let numbers = [];
+      let n = parseInt(prompt("Введите сколько чисел в массиве:"));
+
+      for(let i = 0; i < n; i++) {
+        numbers.push(parseInt(prompt("Вводите массив:")));
+      }
+
+      let min = Math.min(...numbers);
+      let max = Math.max(...numbers);
+
+      console.log("Максимум:", max);
+      console.log("Минимум:", min);
+    </script>
+
+    <script>
+      let str = prompt();
+      const reversedStr = str.split('').reverse().join('');
+      alert(reversedStr);
+    </script> -->
+
+    <script>
+      const arr = [3, 5, 8, 13, 21, 42];
+      let sum = 0;
+
+      arr.forEach(num => {
+        if (num % 2 === 0) {
+          sum += Math.sqrt(num);
+        }
+      });
+
+      console.log(sum);
+    </script>
+
+     <script>
+      function anagram(str1, str2) {
+
+        const Str1 = str1.replace(/\s/g, '').toLowerCase();
+        const Str2 = str2.replace(/\s/g, '').toLowerCase();
+
+
+        if (Str1.length !== Str2.length) {
+          return false;
+        }
+
+        const arr1 = Str1.split('').sort();
+        const arr2 = Str2.split('').sort();
+
+
+        return arr1.join('') === arr2.join('');
+        }
+
+      console.log(anagram("Лунь", "нуль"));
+      console.log(anagram("Лунь", "ноль"));
+    </script>
+
+    <script>
+      function palindrome(str) {
+      const Str = str.toLowerCase().replace(/\s/g, '');
+
+      for (let i = 0; i < Str.length / 2; i++) {
+          if (Str[i] !== Str[Str.length - i - 1]) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      console.log(palindrome("Не гни папин ген"));
+      console.log(palindrome("123"));
+    </script> -->
+
+    <!-- <script>
+      for(let i = 1; i <= 3; i++) {
+        setTimeout((num) => console.log(num), 1000, i);
+      }
+    </script>
+
+    <div>
+      <button id="minuse-btn">-</button>
+      <span id="value">0</span>
+      <button id="pluse-btn">+</button>
+    </div>
+
+    <script>
+      var valueElement = document.getElementById("value");
+      var minuseButton = document.getElementById("minuse-btn");
+      var pluseButton = document.getElementById("pluse-btn");
+      var value = 0;
+
+      minuseButton.addEventListener("click", function() {
+        value--;
+        valueElement.textContent = value;
+      });
+
+      pluseButton.addEventListener("click", function() {
+        value++;
+        valueElement.textContent = value;
+      });
+    </script>
+  </body>
+</html>
