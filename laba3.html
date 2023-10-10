@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <script>
+        let name, admin;
+        name = "John";
+        admin = name;
+        alert(admin);
+      </script>
+
+      <script>
+        let a = prompt("Первое число", 1);
+        let b = prompt("Второе число", 2);
+
+        alert(+a + +b);
+      </script>
+
+      <script>
+        for (let i = 2; i <= 10; i++){
+          if(i % 2 == 0){
+            alert(i);
+          }
+        }
+      </script>
+
+      <script>
+        let i = 0;
+        while (i <= 3){
+          alert(`number ${i}!`);
+          i++;
+        };
+      </script>
+
+      <script>
+        let num;
+        do {
+          num = prompt("Введите число, большее 100", 0);
+        } while (num <= 100 && num !== null);
+      </script>
+
+      <script>
+        function checkPrime(num) {
+          for (let i = 2, sqrt = Math.sqrt(num); i <= sqrt; i++) {
+            if (num % i === 0) {
+              return false;
+            }
+          }
+          return num > 1;
+        }
+
+        function printPrimes(n) {
+          for (let i = 2; i <= n; i++) {
+            if (checkPrime(i)) {
+              alert(i);
+            }
+          }
+        }
+
+        let n = prompt();
+        alert(printPrimes(n));
+      </script>
+
+      <script>
+        function reverseNumber(num){
+          let number = 0;
+          while (num !== 0){
+            number = (number * 10) + (num % 10);
+            num = Math.trunc(num / 10);
+          }
+          return number;
+        }
+        let num = prompt();
+        alert("число в обратном порядке:" + reverseNumber(num));
+      </script>
+
+      <script>
+        function remove(number) {
+          var numberString = number.toString();
+          var str = "";
+
+          for (var i = 0; i < numberString.length; i++) {
+            if (str.indexOf(numberString[i]) === -1) {
+              str += numberString[i];
+            }
+          }
+
+          return parseInt(str);
+        }
+        let number = prompt();
+        var result = remove(number);
+        alert(remove(number));
+      </script>
+
+      <script>
+        function FindFrstChar(str) {
+          var cnt = {};
+          for (var i = 0; i < str.length; i++) {
+            var char = str[i];
+            if (cnt[char]) {
+              cnt[char]++;
+            } else {
+              cnt[char] = 1;
+            }
+          };
+          for (var i = 0; i < str.length; i++) {
+            var char = str[i];
+            if (cnt[char] === 1) {
+              return char;
+            }
+          }
+          return null;
+        }
+
+        let str = prompt();
+        let result = FindFrstChar(str);
+        alert(result);
+      </script>
+
+      <script>
+        function generateRandomStr(length) {
+          const letter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+          let result = '';
+
+          for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * letter.length);
+            result += letter.charAt(randomIndex);
+          }
+          return result;
+        }
+        let str = prompt();
+        const randomStr = generateRandomStr(str);
+        alert(randomStr);
+      </script>
+
+      <script>
+        function getUnique(str) {
+          const unique = new Set();
+          for (let char of str) {
+            unique.add(char);
+          }
+          const uniqueStr = Array.from(unique).join('');
+
+          return uniqueStr;
+        }
+
+        let str = prompt();
+        let result = getUnique(str);
+        alert(result);
+      </script>
+
+  </body>
+</html>
