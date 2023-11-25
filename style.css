@@ -1,8 +1,43 @@
-body{
+@charset "UTF-8";
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+  padding: 0;
+  margin: 100;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body{
   background: #006666;
   position: center;
-
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
+
+
 h1{
   color: white;
   font-size: 50px;
@@ -40,47 +75,109 @@ input{
   text-align: center;
 }
 
-
-ol {
-  counter-reset: li;
-  list-style: none;
-  padding: 0;
-  text-align: left;
-  margin-top: 25px;
+input, button, textarea {
+  font-family: inherit;
 }
 
-ol li {
-  position: relative;
-  display: flex;
-  padding: 15px;
-  margin-top: 0;
-  background: #D3D4DA;
-  color: #444;
+input::-ms-clear {
+  display: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
   text-decoration: none;
 }
 
-ol li > div {
+a:hover {
+  text-decoration: none;
+}
+
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+.custom-checkbox > input[type=checkbox] {
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.custom-checkbox {
   width: 100%;
 }
 
-ol li > div:hover{
+.custom-checkbox > span {
+  display: inline-flex;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.checkbox-span {
+  color: transparent;
+  background-color: transparent;
+}
+
+.custom-checkbox > input:checked + .checkbox-span {
+  content: "✓";
+  color: black;
+  -webkit-text-decoration: transparent;
+          text-decoration: transparent;
+}
+
+.custom-checkbox > input:checked ~ span {
   text-decoration: line-through;
 }
 
-ol li:hover {
-  background: #999999;
+.custom-checkbox > input:checked {
+  background-color: blue;
 }
 
-ol li:active{
-  background: #777777;
-  content: "✓";
+.input-form {
+  padding: 5vh 10vw;
+  background-color: rgb(47, 79, 79);
 }
 
-ol li::before{
-  content: "✓";
-  margin-right: 20px;
+.input-text::-moz-placeholder {
+  color: rgb(119, 118, 118);
 }
 
-ol li::after{
-  content: "✕";
+.input-text::placeholder {
+  color: rgb(119, 118, 118);
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(249, 249, 249);
+}
+
+li:hover {
+  background-color: rgb(238, 238, 238);
 }

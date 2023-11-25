@@ -7,18 +7,80 @@
   </head>
   <body class="outer">
     <span class="inner">
+      <div class="main">
+        <div class="input-form">
+            <h1>Список дел</h1>
 
-    <h1>Список дел</h1>
+            <input type="text" class="input-text" id="taskInput" placeholder="Новый элемент списка" onkeypress="handleKeyPress(event)">
+            <button type="button" class="save-btn" onclick="addTask()" name="button" style="background:silver; border:none">Создать</button>
+            <button type="button" class="delete-btn" onclick="deleteTask()" name="button" style="background:red; border:none">Очистить все</button><br>
+        </div>
+        <ul id="taskList"></ul>
+      </div>
 
-    <input type="text" name="" placeholder="Новый элемент списка">
-    <button type="button" name="button" style="background:silver; border:none">Создать</button>
-    <button type="button" name="button" style="background:red; border:none">Очистить все</button><br>
+      <!-- <ol>
+          <li><div> Почесать кошку</div></li>
+          <li><div> Полить картошку</div></li>
+          <li><div> Сложить в Лукошко</div></li>
+      </ol> -->
 
-    <ol>
-        <li><div> Почесать кошку</div></li>
-        <li><div> Полить картошку</div></li>
-        <li><div> Сложить в Лукошко</div></li>
-    </ol>
+      <script>
+          let tasks = [];
+          let editingTaskIndex = -1;
+
+          function addTask() {
+              let taskInput = document.getElementById("taskInput");
+              let task = taskInput.value;
+              if (task.trim() !== "") {
+                  if (editingTaskIndex !== -1) {
+                      tasks[editingTaskIndex] = task;
+                      editingTaskIndex = -1;
+                  } else {
+                      tasks.push(task);
+                  }
+                  taskInput.value = "";
+                  displayTasks();
+              }
+          }
+
+          function deleteTask(index) {
+              tasks.splice(index, 1);
+              displayTasks();
+          }
+
+          function editTask(index) {
+              editingTaskIndex = index;
+              let taskInput = document.getElementById("taskInput");
+              taskInput.value = tasks[index];
+              displayTasks();
+          }
+
+          function handleKeyPress(event) {
+              if (event.key === "Enter") {
+                  addTask();
+              }
+          }
+
+          function displayTasks() {
+              let taskList = document.getElementById("taskList");
+              taskList.innerHTML = "";
+
+              tasks.forEach(function(task, index) {
+                  let li = document.createElement("li");
+                  li.innerHTML = `
+                      <label class="custom-checkbox">
+                          <input type="checkbox" class="checkbox">
+                          <span class="checkbox-span">&check;</span><span>${index === editingTaskIndex ? '<input type="text" id="editedTaskInput" value="' + task + '">' : task}</span>
+                      </label>
+                      <button class="edit-btn" onclick="editTask(${index})">&#9998;</button>
+                      <button class="delete-btn" onclick="deleteTask(${index})">&cross;</button>
+                  `;
+                  taskList.appendChild(li);
+              });
+          }
+
+          displayTasks();
+      </script>
     </span>
   </body>
 </html>
