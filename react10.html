@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="circle.css">
+    <title></title>
+    <script>var exports = {};</script>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+
+    <!-- <script defer type="text/babel">
+      function CountdownTimer() {
+        const [timer, setTimer] = React.useState(10);
+
+        React.useEffect(() => {
+            const interval = setInterval(() => {
+              if (timer > 0) {
+                setTimer(timer - 1);
+              }
+            }, 1000);
+
+            return () => clearInterval(interval);
+          }, [timer]);
+
+          return (
+            <div>
+              {timer}
+            </div>
+          );
+        };
+        ReactDOM.render(<CountdownTimer />, document.getElementById('root'));
+    </script> -->
+
+    <!-- <script defer type="text/babel">
+      function Timer() {
+        const [count, setCount] = React.useState(0);
+        const intervalRef = React.useRef();
+
+        const startTimer = () => {
+          intervalRef.current = setInterval(() => {
+            setCount((prevCount) => prevCount + 1);
+          }, 1000);
+        };
+
+        React.useEffect(() => {
+          return () => {
+            clearInterval(intervalRef.current);
+          };
+        }, []);
+
+        return (
+          <div>
+            <p>{count}</p>
+            <button onClick={startTimer}>▶️</button>
+          </div>
+          );
+        };
+        ReactDOM.render(<Timer />, document.getElementById('root'));
+    </script> -->
+
+    <!-- <script defer type = "text/babel">
+      function OutputOfPrimeNumbers() {
+        const [primes, setPrimes] = React.useState([2]);
+
+        React.useEffect(() => {
+          const isPrime = (num) => {
+            for (let i = 2, sqrt = Math.sqrt(num); i <= sqrt; i++) {
+              if (num % i === 0) return false;
+            }
+            return num > 1;
+          };
+
+          const timer = setInterval(() => {
+            let nextNumber = primes[primes.length - 1] + 1;
+            while (!isPrime(nextNumber)) {
+              nextNumber++;
+            }
+            setPrimes([...primes, nextNumber]);
+          }, 1000);
+
+          return () => clearInterval(timer);
+        }, [primes]);
+
+        return (
+          <div>
+            {primes.join(', ')}
+          </div>
+        );
+      };
+      ReactDOM.render(<OutputOfPrimeNumbers />, document.getElementById('root'));
+    </script> -->
+
+    <!-- <script type="text/babel">
+      function TrafficLight(){
+        const [activeColor, setActiveColor] = React.useState('red');
+
+        React.useEffect(() => {
+          const interval = setInterval(() => {
+            setActiveColor((prevColor) => {
+              if (prevColor === 'red') return 'green';
+              else if (prevColor === 'green') return 'yellow';
+              else return 'red';
+            });
+          }, 1000);
+
+          return () => clearInterval(interval);
+        }, []);
+
+        return (
+          <div>
+            <div class = "circle" style={{ backgroundColor: activeColor, width: "100px", height: "100px" }}></div>
+          </div>
+        );
+      };
+      ReactDOM.render(<TrafficLight />, document.getElementById('root'));
+    </script> -->
+
+    <!-- <script type="text/babel">
+      function Revert({ s }) {
+        const [revertedString, setRevertedString] = React.useState(s);
+
+        React.useEffect(() => {
+          const interval = setInterval(() => {
+            setRevertedString((prevString) => {
+              return prevString?.charAt(prevString.length - 1) + prevString?.substring(0, prevString.length - 1);
+            });
+          }, 1000);
+
+          return () => clearInterval(interval);
+        }, []);
+
+        return <div>{revertedString}</div>;
+      };
+      ReactDOM.render(<Revert s="привет!"/>, document.getElementById('root'));
+    </script> -->
+
+  </body>
+</html>
